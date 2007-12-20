@@ -14,6 +14,7 @@ Source1:	bootparamd.init.bz2
 Requires(post):	rpm-helper
 Requires(preun): rpm-helper
 Requires:	portmap
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 The bootparamd process provides bootparamd, a server process which
