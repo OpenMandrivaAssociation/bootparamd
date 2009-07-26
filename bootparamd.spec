@@ -1,6 +1,6 @@
 %define	name	bootparamd
 %define	version	0.17
-%define	release	%mkrel 14
+%define	release	%mkrel 15
 
 Summary:	A server process which provides boot information to diskless clients
 Name:		%{name}
@@ -13,8 +13,8 @@ Source1:	bootparamd.init.bz2
 #Patch: netkit-bootparamd-0.10-misc.patch.bz2
 Requires(post):	rpm-helper
 Requires(preun): rpm-helper
-Requires:	portmap
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+Requires:	rpcbind
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 The bootparamd process provides bootparamd, a server process which
@@ -48,19 +48,19 @@ perl -pi -e '
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_bindir}
-mkdir -p $RPM_BUILD_ROOT%{_sbindir}
-mkdir -p $RPM_BUILD_ROOT%{_mandir}/man{1,5,8}
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d
-make INSTALLROOT=$RPM_BUILD_ROOT install
-install -m 755 bootparamd.init $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/bootparamd
+rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_sbindir}
+mkdir -p %{buildroot}%{_mandir}/man{1,5,8}
+mkdir -p %{buildroot}%{_sysconfdir}/rc.d/init.d
+make INSTALLROOT=%{buildroot} install
+install -m 755 bootparamd.init %{buildroot}%{_sysconfdir}/rc.d/init.d/bootparamd
 
-cd $RPM_BUILD_ROOT%{_mandir}/man8
-ln -s rpc.bootparamd.8.bz2 $RPM_BUILD_ROOT%{_mandir}/man8/bootparamd.8.bz2
+cd %{buildroot}%{_mandir}/man8
+ln -s rpc.bootparamd.8.bz2 %{buildroot}%{_mandir}/man8/bootparamd.8.bz2
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %_post_service bootparamd
