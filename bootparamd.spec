@@ -9,8 +9,7 @@ Release:	%{release}
 License:	BSD
 Group:		System/Servers
 Source:		ftp://sunsite.unc.edu/pub/Linux/system/network/daemons/netkit-bootparamd-0.17.tar.bz2
-Source1:	bootparamd.init.bz2
-#Patch: netkit-bootparamd-0.10-misc.patch.bz2
+Source1:	bootparamd.init
 Requires(post):	rpm-helper
 Requires(preun): rpm-helper
 Requires:	rpcbind
@@ -32,8 +31,6 @@ diskless clients on your network.
 
 %prep
 %setup -q -n netkit-bootparamd-%{version}
-#%patch -p1
-bzcat %{SOURCE1} > bootparamd.init
 
 %build
 %serverbuild
@@ -54,7 +51,7 @@ mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_mandir}/man{1,5,8}
 mkdir -p %{buildroot}%{_sysconfdir}/rc.d/init.d
 make INSTALLROOT=%{buildroot} install
-install -m 755 bootparamd.init %{buildroot}%{_sysconfdir}/rc.d/init.d/bootparamd
+install -m 755 %{SOURCE1} %{buildroot}%{_sysconfdir}/rc.d/init.d/bootparamd
 
 cd %{buildroot}%{_mandir}/man8
 ln -s rpc.bootparamd.8.bz2 %{buildroot}%{_mandir}/man8/bootparamd.8.bz2
