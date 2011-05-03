@@ -1,6 +1,6 @@
 %define	name	bootparamd
 %define	version	0.17
-%define	release	%mkrel 17
+%define	release	%mkrel 18
 
 Summary:	A server process which provides boot information to diskless clients
 Name:		%{name}
