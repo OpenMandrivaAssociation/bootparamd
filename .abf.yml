@@ -1,3 +1,3 @@
 sources:
-  "bootparamd.init:"	d703d425d0f35639a37368fcb22a263a847d3d72
-  "netkit-bootparamd-0.17.tar.bz2:"	d66ffcc789b3a17d8371ff2da206498fc9f7e906
+  netkit-bootparamd-0.17.tar.bz2: d66ffcc789b3a17d8371ff2da206498fc9f7e906
+---
