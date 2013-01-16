@@ -7,7 +7,7 @@ Version:	0.17
 Release:	21
 License:	BSD
 Group:		System/Servers
-Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/netkit/netkit-bootparamd-0.17.tar.bz2
+Source0:	ftp://sunsite.unc.edu/pub/Linux/system/network/netkit/netkit-bootparamd-0.17.tar.gz
 Source1:	bootparamd.init
 Requires(post):	rpm-helper
 Requires(preun): rpm-helper
