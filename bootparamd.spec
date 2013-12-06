@@ -4,7 +4,7 @@
 Summary:	A server process which provides boot information to diskless clients
 Name:		bootparamd
 Version:	0.17
-Release:	25
+Release:	26
 License:	BSD
 Group:		System/Servers
 Url:		ftp://sunsite.unc.edu/pub/Linux/system/network/netkit
