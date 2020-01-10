@@ -31,7 +31,7 @@ diskless clients on your network.
 
 %prep
 %setup -qn netkit-bootparamd-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 %serverbuild
